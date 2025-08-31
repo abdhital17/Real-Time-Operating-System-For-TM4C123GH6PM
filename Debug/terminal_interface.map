@@ -1,0 +1,192 @@
+******************************************************************************
+                  TI ARM Linker Unix v20.2.7                   
+******************************************************************************
+>> Linked Sat Aug 30 18:51:40 2025
+
+OUTPUT FILE NAME:   <terminal_interface.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000c75
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000cc6  0003f33a  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000cc6   00000cc6    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000a5a   00000a5a    r-x .text
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00000a5a     
+                  0000026c    000007b6     terminal.obj (.text)
+                  00000a22    00000002     --HOLE-- [fill = 0]
+                  00000a24    0000017c     uart0.obj (.text)
+                  00000ba0    000000d4     onboard_leds.obj (.text)
+                  00000c74    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000ca0    00000012     main.obj (.text)
+                  00000cb2    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000cbe    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000cc2    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    ./
+       terminal.obj                   1974   0         0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       uart0.obj                      380    0         0      
+       onboard_leds.obj               212    0         0      
+       main.obj                       18     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         2596   620       0      
+                                                              
+    /home/moonknight/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   2648   620       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                   
+-------   ----                   
+00000cc3  C$$EXIT                
+00000cb3  ResetISR               
+20000200  __STACK_END            
+00000200  __STACK_SIZE           
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+00000000  __TI_static_base__     
+ffffffff  __binit__              
+ffffffff  __c_args__             
+UNDEFED   __mpu_init             
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+00000c75  _c_int00_noinit_noargs 
+00000cbf  _system_pre_init       
+00000cc3  abort                  
+00000501  alphabetToInteger      
+ffffffff  binit                  
+00000000  g_pfnVectors           
+000005df  getFieldInteger        
+00000437  getFieldString         
+00000b2d  getcUart0              
+0000026d  getsUart0              
+00000ba1  initOnboardLeds        
+00000a25  initUart0              
+00000469  integerToAlphabet      
+00000837  ipcs                   
+00000619  isCommand              
+00000b41  kbhitUart0             
+00000841  kill                   
+00000be1  ledState               
+00000ca1  main                   
+000002fb  parseFields            
+00000877  pi                     
+000008cb  pidof                  
+00000865  pkill                  
+00000893  preempt                
+0000082d  ps                     
+00000ae5  putcUart0              
+00000b01  putsUart0              
+000008eb  reboot                 
+000008dd  run                    
+000008af  sched                  
+00000ab9  setUart0BaudRate       
+0000064b  startShell             
+00000543  stringCompare          
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                   
+-------   ----                   
+00000000  __TI_static_base__     
+00000000  g_pfnVectors           
+00000200  __STACK_SIZE           
+0000026d  getsUart0              
+000002fb  parseFields            
+00000437  getFieldString         
+00000469  integerToAlphabet      
+00000501  alphabetToInteger      
+00000543  stringCompare          
+000005df  getFieldInteger        
+00000619  isCommand              
+0000064b  startShell             
+0000082d  ps                     
+00000837  ipcs                   
+00000841  kill                   
+00000865  pkill                  
+00000877  pi                     
+00000893  preempt                
+000008af  sched                  
+000008cb  pidof                  
+000008dd  run                    
+000008eb  reboot                 
+00000a25  initUart0              
+00000ab9  setUart0BaudRate       
+00000ae5  putcUart0              
+00000b01  putsUart0              
+00000b2d  getcUart0              
+00000b41  kbhitUart0             
+00000ba1  initOnboardLeds        
+00000be1  ledState               
+00000c75  _c_int00_noinit_noargs 
+00000ca1  main                   
+00000cb3  ResetISR               
+00000cbf  _system_pre_init       
+00000cc3  C$$EXIT                
+00000cc3  abort                  
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+20000200  __STACK_END            
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+ffffffff  __binit__              
+ffffffff  __c_args__             
+ffffffff  binit                  
+UNDEFED   __mpu_init             
+
+[48 symbols]
