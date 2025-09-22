@@ -16,7 +16,7 @@ void initOnboardLeds()
     // Enable clock to GPIO PortF
     SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;
     // Use APB
-    SYSCTL_GPIOHBCTL_R &= ~32;
+    SYSCTL_GPIOHBCTL_R &= ~SYSCTL_GPIOHBCTL_PORTF;
     _delay_cycles(3);
 
     // Configure PF1,PF2,PF3 as outputs
@@ -27,18 +27,18 @@ void initOnboardLeds()
     GPIO_PORTF_DEN_R |= RED_LED_MASK | BLUE_LED_MASK | GREEN_LED_MASK;
 }
 
-void ledState(ledColor color, uint8_t state)
+void setLED(ledColor color, ledState state)
 {
     switch(color)
     {
         case RED:
-            RED_LED = state == 0 ? 0:1;
+            RED_LED = state == OFF ? 0:1;
             break;
         case BLUE:
-            BLUE_LED = state == 0 ? 0:1;
+            BLUE_LED = state == OFF ? 0:1;
             break;
         case GREEN:
-            GREEN_LED = state == 0 ? 0:1;
+            GREEN_LED = state == OFF ? 0:1;
             break;
         default:
             RED_LED = BLUE_LED = GREEN_LED = 0;

@@ -17,9 +17,10 @@
 #define BLUE_LED *((volatile uint32_t*) (0x42000000 + (0x400253FC - 0x40000000) * 32 + 2 * 4))
 
 typedef enum _led_color_{RED, BLUE, GREEN} ledColor;
+typedef enum _led_state_{ON, OFF} ledState;
 
 void initOnboardLeds();
-void ledState(ledColor, uint8_t);
+void setLED(ledColor, ledState);
 
 
 #endif /* ONBOARD_LEDS_H_ */
