@@ -9,11 +9,6 @@
 //-----------------------------------------------------------------------------
 #define MAX_CHARS 80
 #define MAX_FIELDS 5
-#define CARRIAGE_RETURN "\r"
-#define NEWLINE "\n"
-#define CARRIAGE_RETURN_AND_NEWLINE "\n\r"
-#define PRINT_NEWLINE putsUart0(CARRIAGE_RETURN_AND_NEWLINE)
-#define MAX_INT_STR_LENGTH 10
 
 typedef struct _USER_DATA
 {
@@ -31,6 +26,7 @@ int32_t alphabetToInteger(char *numStr);
 bool stringCompare(const char *str1, const char *str2);
 int32_t getFieldInteger(USER_DATA *data, uint8_t fieldNumber);
 uint32_t hexStrToInt(const char hex[]);
+void printHex(uint32_t);
 char* integerToAlphabet(uint32_t decInt, char* outStr);
 bool isCommand(USER_DATA *data, const char strCommand[], uint8_t minArguments);
 

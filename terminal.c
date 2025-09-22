@@ -166,23 +166,32 @@ int32_t getFieldInteger(USER_DATA *data, uint8_t fieldNumber)
 }
 
 // prints the decimal equivalent of the given char* with the hexadecimal number
-/*
 uint32_t hexStrToInt(const char hex[])
 {
     uint8_t i = 0;
     char c;
     uint32_t out = 0;
-    while(hex[i] != 0)
+    
+    while((c = hex[i]) != 0)
     {
-        c = hex[i];
-        if (c >= 48 && c <= 57)
-        {
+        out <<= 4;
 
-        }
+        if (c >= '0' && c <= '9')
+            out += (c - '0');
+        else if (c >= 'A' && c <= 'F')
+            out += (c - 'A');
+        else if (c >= 'a' && c <= 'f')
+            out += (c - 87) << 4;
+        else
+            return 0;
+
         i++;
     }
+    return out;
 
 }
+
+/*
 uint32_t hexToInt(char *hex)
 {
     uint32_t dec = 0;
@@ -235,6 +244,28 @@ uint32_t hexToInt(char *hex)
     return dec;
 }
 */
+
+/*
+* converts a 32-bit word to hex string and prints it to UART0
+*/
+void printHex(uint32_t word)
+{
+    uint8_t i;
+    
+    putsUart0("0x");
+    for(i = 0; i < 8; i++)
+    {
+        uint8_t nibble = (word & 0xF0000000) >> 28;
+        
+        if (nibble <= 9)
+            putcUart0(nibble + '0');         // 0-9
+        else
+            putcUart0(nibble + 'A');         // A-F
+        
+        word = word << 4;
+    }
+    putsUart0("\n\r");
+}
 
 /*function to check whether the entered command matches any of the shell commands
  * returns true if the entered command is valid
@@ -420,7 +451,7 @@ void pidof(const char proc_name[])
 
 void run(const char proc_name[])
 {
-    ledState(RED, 1);
+    ledState(RED, ON);
 }
 
 void reboot()

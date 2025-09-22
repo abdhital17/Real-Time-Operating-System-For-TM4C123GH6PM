@@ -21,6 +21,12 @@
 #ifndef UART0_H_
 #define UART0_H_
 
+#define CARRIAGE_RETURN "\r"
+#define NEWLINE "\n"
+#define CARRIAGE_RETURN_AND_NEWLINE "\n\r"
+#define PRINT_NEWLINE putsUart0(CARRIAGE_RETURN_AND_NEWLINE)
+#define MAX_INT_STR_LENGTH 10
+
 //-----------------------------------------------------------------------------
 // Subroutines
 //-----------------------------------------------------------------------------
